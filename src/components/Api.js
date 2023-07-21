@@ -17,4 +17,6 @@ async function fetchPictures(searchQuery, pageNumber) {
   return data.data.hits;
 }
 
+
+
 export default fetchPictures;
