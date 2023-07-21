@@ -55,22 +55,21 @@ export const App = () => {
       });
   }, [searchQuery, pageNumber]);
 
-  const toggleModal = () => {
-    setShowModal(showModal => !showModal);
-  };
-
   const formSubmitHandler = query => {
     setSearchQuery(query);
     setPageNumber(1);
+    setPictures([])
+    setLoadMore(false)
   };
 
+  
   const imageClickHandler = url => {
     setModalURL(url);
-    this.toggleModal();
+    toggleModal();
   };
 
-  const loadMoreHandler = pageNumber => {
-    setPageNumber(prevPage => prevPage + 1)
+  const toggleModal = () => {
+    setShowModal(showModal => !showModal);
   };
 
   return (
@@ -88,7 +87,7 @@ export const App = () => {
         </ImageGallery>
         {loadMore && (
           <Button
-            loadMoreHandler={loadMoreHandler}
+            onClick={setPageNumber}
             page={pageNumber}
           />
         )}
